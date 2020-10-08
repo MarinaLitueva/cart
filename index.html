@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Тестовое задание</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta htpp-equiv="X-UA-Compatiple" content="ie=edge" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="content">
+        <!--main-->
+        <main class="main">
+          <h2 class="heading">Выберите товар для заказа:</h2>
+          <div class="wrapper-content">
+            <div class="block-descr">
+              <!-- группы товаров-->
+              <div class="form-group">
+                <label for="category" class="label">Группа товаров:
+                  <select id="category">
+                    <option>-</option>                   
+                  </select>
+                </label>
+              </div>
+              <!--список товаров-->
+              <div class="form-group">
+                <label class="label">Товар:
+                  <select id="products">
+                    <option></option>
+                  </select>
+                </label>
+              </div>             
+              <!--описание товара-->
+              <div class="descr" >
+                <span class="label">Описание:</span>
+                <div class="text-block" id="descr"></div>
+              </div>
+              <!--цена товара-->
+              <div class="price" >
+                <span class="label">Цена:</span>
+                <span class="price-num" id="price-num"></span>&nbsp;&nbsp;<span>бел.руб</span>
+              </div>
+               <!--количество товара-->
+               <div class="form-group">
+                <label class="label">Количество:
+                  <input type="number"  id="input" value="1" min="1">
+                </label>
+              </div>
+            </div>
+
+            <div class="block-img" >
+              <img src="" id="block-img"  alt="Товар">
+            </div>
+          </div>
+
+          <button type="button" class="btn" id="btn">Добавить в заказ</button>
+
+          <section class="wrapper-card" id="wrapper-card">
+            <h2 class="heading ">Ваш заказ:</h2> 
+            <div class="cart" id="cart"></div>                    
+          </section>
+        </main>
+      </div>
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
