@@ -77,7 +77,6 @@ function productsChange(e) {
 }
 
 //Корзина
-
 let cart = [];
 
 let btn = document.querySelector('#btn');
@@ -86,7 +85,6 @@ btn.addEventListener('click', function(e) {
   let productIndex = products.selectedIndex;
   if (productIndex != 0) {
     let amount = document.getElementById('input').value;//данные в инпуте
-
     //создаем объект в корзине
     let prodObj = {
       "prod": prodArr[productIndex-1],
@@ -101,7 +99,6 @@ btn.addEventListener('click', function(e) {
         break;
       }
     }
-
     if(prodId === undefined) { 
       cart.push(prodObj)
     } else {
@@ -149,26 +146,34 @@ function cartDisplay(el) {
     let cartPrice = document.createElement('div');
     cartPrice.className = 'price-cart flex';
     cartPrice.textContent = (element.prod.price*element.value) + ' руб';
-    gridBlock.append(cartPrice);
+    gridBlock.append(cartPrice);    
 
     //delete cart          
     let cartDelete = document.createElement('div');
     cartDelete.className = 'cart-block__icon  flex';   
     gridBlock.append(cartDelete);
 
-    cartDelete.addEventListener('click', function(e) {
-      console.log(cart)     
+    cartDelete.addEventListener('click', function(e) {        
+      let prodId = e.target.parentNode.querySelector('.flex > .opacity')
+      let prodIdNum = Number(prodId.innerHTML)
+      var prodIndex;
 
-     let prodId = document.querySelectorAll('.opacity') 
-     console.log(prodId)
-
-      for(var i = 0; i < cart.length; i++) {
-        if(cart[i].prod.id == prodId) {
-          prodId = i;
-          cart.splice(i,1)
-        }
-      }    
-      
-    });    
+      for(var i = 0; i < cart.length; i++) {       
+        if(cart[i].prod.id === prodIdNum) {               
+          prodIndex = i                    
+        }                      
+      }  
+      cart.splice(prodIndex,1)
+      cartDisplay()           
+    });   
+    
   });
+
+  //total cart 
+  let cartTotal = document.getElementById('result');
+  let result = 0;
+  for(var i = 0; i < cart.length; i++) {            
+    result += cart[i].prod.price * cart[i].value      
+  }
+  cartTotal.textContent = 'Итого: ' +  result +  'руб';
 }
